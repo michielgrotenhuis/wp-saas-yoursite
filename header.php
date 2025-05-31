@@ -53,8 +53,15 @@
                     ?>
                 </nav>
 
-                <!-- Header CTA Buttons -->
-                <div class="header-cta hidden lg:flex items-center space-x-4">
+                <!-- Header Actions (CTA Buttons + Theme Toggle) -->
+                <div class="header-actions hidden lg:flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <?php if (get_theme_mod('show_theme_toggle', true)) : ?>
+                        <div class="theme-toggle-wrapper">
+                            <?php echo yoursite_get_theme_toggle_button(); ?>
+                        </div>
+                    <?php endif; ?>
+                    
                     <!-- Login Button -->
                     <a href="<?php echo esc_url(get_theme_mod('header_login_url', '/login')); ?>" 
                        class="login-btn flex items-center px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
@@ -94,8 +101,18 @@
                 ));
                 ?>
                 
-                <!-- Mobile CTA Buttons -->
-                <div class="mobile-cta-buttons mt-4 pt-4 border-t border-gray-200 space-y-3">
+                <!-- Mobile Actions -->
+                <div class="mobile-actions mt-4 pt-4 border-t border-gray-200 space-y-3">
+                    <!-- Mobile Theme Toggle -->
+                    <?php if (get_theme_mod('show_theme_toggle', true)) : ?>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-gray-700">Dark Mode</span>
+                            <?php echo yoursite_get_theme_toggle_button(); ?>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3"></div>
+                    <?php endif; ?>
+                    
+                    <!-- Mobile CTA Buttons -->
                     <a href="<?php echo esc_url(get_theme_mod('header_login_url', '/login')); ?>" 
                        class="mobile-login-btn flex items-center justify-center w-full px-4 py-3 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -213,6 +230,25 @@
     .mobile-menu-toggle:focus {
         outline: 2px solid #667eea;
         outline-offset: 2px;
+    }
+    
+    /* Header Actions Spacing */
+    .header-actions {
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .theme-toggle-wrapper {
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Mobile Actions Styling */
+    .mobile-actions {
+        background-color: rgba(249, 250, 251, 0.5);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
     }
     </style>
 

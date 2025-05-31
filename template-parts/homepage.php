@@ -1,25 +1,30 @@
 <?php
 /**
- * Template part for displaying homepage content
+ * Template part for displaying customizable homepage content
  */
+
+// Get background image for hero
+$hero_bg_image = get_theme_mod('hero_background_image');
+$hero_bg_style = $hero_bg_image ? 'background-image: url(' . esc_url($hero_bg_image) . '); background-size: cover; background-position: center;' : '';
 ?>
 
+<?php if (get_theme_mod('hero_enable', true)) : ?>
 <!-- Hero Section -->
-<section class="hero-gradient text-white py-20 lg:py-32">
+<section class="hero-gradient text-white py-20 lg:py-32" style="<?php echo $hero_bg_style; ?>">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center fade-in-up">
             <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                <?php echo get_theme_mod('hero_title', 'Build Your Online Store in Minutes'); ?>
+                <?php echo esc_html(get_theme_mod('hero_title', __('Build Your Online Store in Minutes', 'yoursite'))); ?>
             </h1>
             <p class="text-xl lg:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
-                <?php echo get_theme_mod('hero_subtitle', 'No code. No hassle. Just launch and sell.'); ?>
+                <?php echo esc_html(get_theme_mod('hero_subtitle', __('No code. No hassle. Just launch and sell.', 'yoursite'))); ?>
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="<?php echo get_theme_mod('cta_primary_url', '#'); ?>" class="btn-primary text-lg px-8 py-4 rounded-lg font-semibold hover-lift">
-                    <?php echo get_theme_mod('cta_primary_text', 'Start Free Trial'); ?>
+                <a href="<?php echo esc_url(get_theme_mod('cta_primary_url', '#')); ?>" class="btn-primary text-lg px-8 py-4 rounded-lg font-semibold hover-lift">
+                    <?php echo esc_html(get_theme_mod('cta_primary_text', __('Start Free Trial', 'yoursite'))); ?>
                 </a>
-                <a href="#demo" class="btn-secondary text-lg px-8 py-4 rounded-lg font-semibold hover-lift">
-                    View Demo
+                <a href="<?php echo esc_url(get_theme_mod('cta_secondary_url', '#demo')); ?>" class="btn-secondary text-lg px-8 py-4 rounded-lg font-semibold hover-lift">
+                    <?php echo esc_html(get_theme_mod('cta_secondary_text', __('View Demo', 'yoursite'))); ?>
                 </a>
             </div>
         </div>
@@ -27,106 +32,112 @@
         <!-- Hero Image/Dashboard Preview -->
         <div class="mt-16 max-w-5xl mx-auto">
             <div class="bg-white rounded-lg shadow-2xl p-8 transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                <div class="bg-gray-100 rounded-lg h-96 flex items-center justify-center" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/homepage-dashboard.jpg');">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg mx-auto mb-4"></div>
-                        <p class="text-gray-600 font-medium">Dashboard Preview</p>
-                        <p class="text-gray-500 text-sm">Beautiful, intuitive store builder</p>
+                <?php 
+                $dashboard_image = get_theme_mod('hero_dashboard_image');
+                if ($dashboard_image) : ?>
+                    <div class="rounded-lg overflow-hidden">
+                        <img src="<?php echo esc_url($dashboard_image); ?>" alt="<?php _e('Dashboard Preview', 'yoursite'); ?>" class="w-full h-96 object-cover">
                     </div>
-                </div>
+                <?php else : ?>
+                    <div class="bg-gray-100 rounded-lg h-96 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg mx-auto mb-4"></div>
+                            <p class="text-gray-600 font-medium"><?php _e('Dashboard Preview', 'yoursite'); ?></p>
+                            <p class="text-gray-500 text-sm"><?php _e('Beautiful, intuitive store builder', 'yoursite'); ?></p>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('social_proof_enable', true)) : ?>
 <!-- Social Proof -->
 <section class="bg-gray-50 py-12">
     <div class="container mx-auto px-4">
         <div class="text-center">
-            <p class="text-gray-600 mb-8">Trusted by over 10,000 merchants worldwide</p>
-            <div class="flex justify-center items-center space-x-8 opacity-60">
-                <!-- Logo placeholders -->
-                <div class="w-24 h-12 bg-gray-300 rounded flex items-center justify-center">
-                    <span class="text-xs text-gray-500">Logo</span>
-                </div>
-                <div class="w-24 h-12 bg-gray-300 rounded flex items-center justify-center">
-                    <span class="text-xs text-gray-500">Logo</span>
-                </div>
-                <div class="w-24 h-12 bg-gray-300 rounded flex items-center justify-center">
-                    <span class="text-xs text-gray-500">Logo</span>
-                </div>
-                <div class="w-24 h-12 bg-gray-300 rounded flex items-center justify-center">
-                    <span class="text-xs text-gray-500">Logo</span>
-                </div>
-                <div class="w-24 h-12 bg-gray-300 rounded flex items-center justify-center">
-                    <span class="text-xs text-gray-500">Logo</span>
-                </div>
+            <p class="text-gray-600 mb-8"><?php echo esc_html(get_theme_mod('social_proof_text', __('Trusted by over 10,000 merchants worldwide', 'yoursite'))); ?></p>
+            <div class="flex justify-center items-center flex-wrap gap-8 opacity-60">
+                <?php for ($i = 1; $i <= 5; $i++) : 
+                    $logo = get_theme_mod("social_proof_logo_{$i}");
+                    if ($logo) : ?>
+                        <div class="w-24 h-12 flex items-center justify-center">
+                            <img src="<?php echo esc_url($logo); ?>" alt="<?php printf(__('Partner Logo %d', 'yoursite'), $i); ?>" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                    <?php else : ?>
+                        <div class="w-24 h-12 bg-gray-300 rounded flex items-center justify-center">
+                            <span class="text-xs text-gray-500"><?php _e('Logo', 'yoursite'); ?></span>
+                        </div>
+                    <?php endif;
+                endfor; ?>
             </div>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('benefits_enable', true)) : ?>
 <!-- Key Benefits -->
 <section class="py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
-                    Everything you need to sell online
+                    <?php echo esc_html(get_theme_mod('benefits_title', __('Everything you need to sell online', 'yoursite'))); ?>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    From store building to shipping, we've got all the tools to help you succeed
+                    <?php echo esc_html(get_theme_mod('benefits_subtitle', __('From store building to shipping, we\'ve got all the tools to help you succeed', 'yoursite'))); ?>
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center feature-card p-6 rounded-lg">
-                    <div class="w-16 h-16 bg-blue-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Drag & Drop Builder</h3>
-                    <p class="text-gray-600">Build your store with our intuitive drag & drop interface. No coding required.</p>
-                </div>
+                <?php 
+                $benefit_icons = array(
+                    'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
+                    'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z',
+                    'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+                    'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'
+                );
                 
-                <div class="text-center feature-card p-6 rounded-lg">
-                    <div class="w-16 h-16 bg-green-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Secure Payments</h3>
-                    <p class="text-gray-600">Accept payments safely with our secure checkout and multiple payment options.</p>
-                </div>
-                
-                <div class="text-center feature-card p-6 rounded-lg">
-                    <div class="w-16 h-16 bg-purple-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Marketing & SEO</h3>
-                    <p class="text-gray-600">Built-in marketing tools and SEO optimization to grow your business.</p>
-                </div>
-                
-                <div class="text-center feature-card p-6 rounded-lg">
-                    <div class="w-16 h-16 bg-orange-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Shipping Made Simple</h3>
-                    <p class="text-gray-600">Manage inventory and shipping with automated tools and integrations.</p>
-                </div>
+                for ($i = 1; $i <= 4; $i++) : 
+                    $title = get_theme_mod("benefit_{$i}_title");
+                    $description = get_theme_mod("benefit_{$i}_description");
+                    $color = get_theme_mod("benefit_{$i}_color", 'blue');
+                    $custom_image = get_theme_mod("benefit_{$i}_image");
+                    
+                    if ($title || $description) : ?>
+                        <div class="text-center feature-card p-6 rounded-lg">
+                            <div class="w-16 h-16 bg-<?php echo esc_attr($color); ?>-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                                <?php if ($custom_image) : ?>
+                                    <img src="<?php echo esc_url($custom_image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-8 h-8 object-contain">
+                                <?php else : ?>
+                                    <svg class="w-8 h-8 text-<?php echo esc_attr($color); ?>-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<?php echo esc_attr($benefit_icons[$i-1]); ?>"></path>
+                                    </svg>
+                                <?php endif; ?>
+                            </div>
+                            <?php if ($title) : ?>
+                                <h3 class="text-xl font-semibold mb-3"><?php echo esc_html($title); ?></h3>
+                            <?php endif; ?>
+                            <?php if ($description) : ?>
+                                <p class="text-gray-600"><?php echo esc_html($description); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif;
+                endfor; ?>
             </div>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('features_enable', true)) : ?>
 <!-- Features Grid -->
 <?php
-$features = get_features(6);
+$features_count = get_theme_mod('features_count', 6);
+$features = get_features($features_count);
 if ($features->have_posts()) :
 ?>
 <section class="bg-gray-50 py-20">
@@ -134,10 +145,10 @@ if ($features->have_posts()) :
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
-                    Powerful features for every business
+                    <?php echo esc_html(get_theme_mod('features_title', __('Powerful features for every business', 'yoursite'))); ?>
                 </h2>
                 <p class="text-xl text-gray-600">
-                    Everything you need to create, customize, and grow your online store
+                    <?php echo esc_html(get_theme_mod('features_subtitle', __('Everything you need to create, customize, and grow your online store', 'yoursite'))); ?>
                 </p>
             </div>
             
@@ -152,14 +163,14 @@ if ($features->have_posts()) :
                     <h3 class="text-xl font-semibold mb-4"><?php the_title(); ?></h3>
                     <p class="text-gray-600 mb-4"><?php the_excerpt(); ?></p>
                     <a href="<?php the_permalink(); ?>" class="text-blue-600 font-medium hover:text-blue-800">
-                        Learn More →
+                        <?php _e('Learn More', 'yoursite'); ?> →
                     </a>
                 </div>
                 <?php endwhile; ?>
             </div>
             
             <div class="text-center mt-12">
-                <a href="<?php echo home_url('/features'); ?>" class="btn-secondary">View All Features</a>
+                <a href="<?php echo home_url('/features'); ?>" class="btn-secondary"><?php _e('View All Features', 'yoursite'); ?></a>
             </div>
         </div>
     </div>
@@ -168,7 +179,9 @@ if ($features->have_posts()) :
 wp_reset_postdata();
 endif;
 ?>
+<?php endif; ?>
 
+<?php if (get_theme_mod('pricing_enable', true)) : ?>
 <!-- Pricing Section -->
 <?php
 $pricing_plans = get_pricing_plans();
@@ -179,10 +192,10 @@ if ($pricing_plans->have_posts()) :
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
-                    Simple, transparent pricing
+                    <?php echo esc_html(get_theme_mod('pricing_title', __('Simple, transparent pricing', 'yoursite'))); ?>
                 </h2>
                 <p class="text-xl text-gray-600">
-                    Choose the plan that's right for your business
+                    <?php echo esc_html(get_theme_mod('pricing_subtitle', __('Choose the plan that\'s right for your business', 'yoursite'))); ?>
                 </p>
             </div>
             
@@ -193,12 +206,12 @@ if ($pricing_plans->have_posts()) :
                     $features = get_post_meta(get_the_ID(), '_pricing_features', true);
                     $featured = get_post_meta(get_the_ID(), '_pricing_featured', true);
                     $purchase_url = get_post_meta(get_the_ID(), '_pricing_purchase_url', true) ?: '#';
-                    $button_text = get_post_meta(get_the_ID(), '_pricing_button_text', true) ?: 'Get Started';
+                    $button_text = get_post_meta(get_the_ID(), '_pricing_button_text', true) ?: __('Get Started', 'yoursite');
                 ?>
                 <div class="bg-white rounded-lg p-8 border-2 border-gray-200 feature-card relative <?php echo $featured ? 'border-blue-500 shadow-lg' : ''; ?>">
                     <?php if ($featured) : ?>
                         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                            <span class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">Most Popular</span>
+                            <span class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium"><?php _e('Most Popular', 'yoursite'); ?></span>
                         </div>
                     <?php endif; ?>
                     
@@ -206,7 +219,7 @@ if ($pricing_plans->have_posts()) :
                         <h3 class="text-2xl font-bold mb-4"><?php the_title(); ?></h3>
                         <div class="mb-4">
                             <span class="text-4xl font-bold">$<?php echo number_format($price, 2); ?></span>
-                            <span class="text-gray-600">/ <?php echo $period; ?></span>
+                            <span class="text-gray-600">/ <?php echo esc_html($period); ?></span>
                         </div>
                         <p class="text-gray-600"><?php the_excerpt(); ?></p>
                     </div>
@@ -223,7 +236,7 @@ if ($pricing_plans->have_posts()) :
                                 <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
-                                <?php echo trim($feature); ?>
+                                <?php echo esc_html(trim($feature)); ?>
                             </li>
                             <?php 
                                 endif;
@@ -241,7 +254,7 @@ if ($pricing_plans->have_posts()) :
             </div>
             
             <div class="text-center mt-12">
-                <a href="<?php echo home_url('/pricing'); ?>" class="btn-secondary">View Full Pricing</a>
+                <a href="<?php echo home_url('/pricing'); ?>" class="btn-secondary"><?php _e('View Full Pricing', 'yoursite'); ?></a>
             </div>
         </div>
     </div>
@@ -250,10 +263,13 @@ if ($pricing_plans->have_posts()) :
 wp_reset_postdata();
 endif;
 ?>
+<?php endif; ?>
 
+<?php if (get_theme_mod('testimonials_enable', true)) : ?>
 <!-- Testimonials -->
 <?php
-$testimonials = get_testimonials(3);
+$testimonials_count = get_theme_mod('testimonials_count', 3);
+$testimonials = get_testimonials($testimonials_count);
 if ($testimonials->have_posts()) :
 ?>
 <section class="bg-gray-50 py-20">
@@ -261,10 +277,10 @@ if ($testimonials->have_posts()) :
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
-                    Loved by thousands of merchants
+                    <?php echo esc_html(get_theme_mod('testimonials_title', __('Loved by thousands of merchants', 'yoursite'))); ?>
                 </h2>
                 <p class="text-xl text-gray-600">
-                    See what our customers have to say about their success
+                    <?php echo esc_html(get_theme_mod('testimonials_subtitle', __('See what our customers have to say about their success', 'yoursite'))); ?>
                 </p>
             </div>
             
@@ -305,25 +321,28 @@ if ($testimonials->have_posts()) :
 wp_reset_postdata();
 endif;
 ?>
+<?php endif; ?>
 
-<!-- CTA Section -->
+<?php if (get_theme_mod('final_cta_enable', true)) : ?>
+<!-- Final CTA Section -->
 <section class="hero-gradient text-white py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl lg:text-5xl font-bold mb-6">
-                Ready to launch your store?
+                <?php echo esc_html(get_theme_mod('final_cta_title', __('Ready to launch your store?', 'yoursite'))); ?>
             </h2>
             <p class="text-xl mb-8 opacity-90">
-                Start free today—no credit card required. Join thousands of successful merchants.
+                <?php echo esc_html(get_theme_mod('final_cta_subtitle', __('Start free today—no credit card required. Join thousands of successful merchants.', 'yoursite'))); ?>
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="<?php echo get_theme_mod('cta_primary_url', '#'); ?>" class="btn-primary text-lg px-8 py-4 bg-white text-purple-600 hover:bg-gray-100">
-                    <?php echo get_theme_mod('cta_primary_text', 'Start Free Trial'); ?>
+                <a href="<?php echo esc_url(get_theme_mod('final_cta_primary_url', '#')); ?>" class="btn-primary text-lg px-8 py-4 bg-white text-purple-600 hover:bg-gray-100">
+                    <?php echo esc_html(get_theme_mod('final_cta_primary_text', __('Start Free Trial', 'yoursite'))); ?>
                 </a>
-                <a href="<?php echo home_url('/contact'); ?>" class="btn-secondary text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-purple-600">
-                    Book a Demo
+                <a href="<?php echo esc_url(get_theme_mod('final_cta_secondary_url', '/contact')); ?>" class="btn-secondary text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-purple-600">
+                    <?php echo esc_html(get_theme_mod('final_cta_secondary_text', __('Book a Demo', 'yoursite'))); ?>
                 </a>
             </div>
         </div>
     </div>
 </section>
+<?php endif; ?>

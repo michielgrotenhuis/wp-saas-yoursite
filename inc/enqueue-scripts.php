@@ -159,6 +159,30 @@ function yoursite_get_inline_css() {
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
             transform: translateY(-2px) !important;
         }
+        
+        /* Dark mode support for buttons */
+        body.dark-mode .btn-secondary {
+            background: var(--bg-secondary) !important;
+            border-color: var(--border-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+        
+        body.dark-mode .btn-secondary:hover {
+            border-color: #667eea !important;
+            color: #667eea !important;
+        }
+        
+        /* Dark mode hero adjustments */
+        body.dark-mode .hero-gradient .btn-secondary {
+            background: transparent !important;
+            border: 2px solid white !important;
+            color: white !important;
+        }
+        
+        body.dark-mode .hero-gradient .btn-secondary:hover {
+            background: white !important;
+            color: #764ba2 !important;
+        }
     ";
 }
 
@@ -199,4 +223,32 @@ function yoursite_admin_bar_styles() {
     }
 }
 add_action('wp_head', 'yoursite_admin_bar_styles');
+
+/**
+ * Add dark mode preload script to prevent flash
+ */
+function yoursite_preload_dark_mode() {
+    ?>
+    <script>
+    // Prevent flash of unstyled content for dark mode
+    (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const defaultTheme = '<?php echo esc_js(get_theme_mod('default_theme_mode', 'light')); ?>';
+        
+        let theme = savedTheme;
+        if (savedTheme === 'auto' || (!savedTheme && defaultTheme === 'auto')) {
+            theme = prefersDark ? 'dark' : 'light';
+        } else if (!savedTheme && defaultTheme !== 'light') {
+            theme = defaultTheme;
+        }
+        
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    })();
+    </script>
+    <?php
+}
+add_action('wp_head', 'yoursite_preload_dark_mode', 0);
 ?>

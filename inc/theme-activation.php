@@ -6,11 +6,107 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
 /**
- * Create demo case studies
- * Add this function to your inc/theme-activation.php file
+ * Create customizer directory structure and files
+ */
+function yoursite_create_customizer_files() {
+    $customizer_dir = get_template_directory() . '/inc/customizer';
+    
+    // Create directory if it doesn't exist
+    if (!file_exists($customizer_dir)) {
+        wp_mkdir_p($customizer_dir);
+    }
+    
+    // Array of customizer files to create
+    $customizer_files = array(
+        'customizer-homepage.php' => '<?php
+/**
+ * Homepage customizer options - Auto-generated
+ * Edit through WordPress Admin > Appearance > Customize > Edit Pages > Homepage
  */
 
+if (!defined("ABSPATH")) {
+    exit;
+}
+
+// This file is automatically loaded by the main customizer.php
+// The actual customizer options are defined in the main customizer system
+',
+        'customizer-header.php' => '<?php
+/**
+ * Header customizer options - Auto-generated  
+ * Edit through WordPress Admin > Appearance > Customize > Header Settings
+ */
+
+if (!defined("ABSPATH")) {
+    exit;
+}
+
+// This file is automatically loaded by the main customizer.php
+',
+        'customizer-footer.php' => '<?php
+/**
+ * Footer customizer options - Auto-generated
+ * Edit through WordPress Admin > Appearance > Customize > Footer Settings  
+ */
+
+if (!defined("ABSPATH")) {
+    exit;
+}
+
+// This file is automatically loaded by the main customizer.php
+',
+        'customizer-colors.php' => '<?php
+/**
+ * Colors and typography customizer options - Auto-generated
+ * Edit through WordPress Admin > Appearance > Customize > Colors & Typography
+ */
+
+if (!defined("ABSPATH")) {
+    exit;
+}
+
+// This file is automatically loaded by the main customizer.php
+',
+        'customizer-company.php' => '<?php
+/**
+ * Company information customizer options - Auto-generated
+ * Edit through WordPress Admin > Appearance > Customize > Company Information
+ */
+
+if (!defined("ABSPATH")) {
+    exit;
+}
+
+// This file is automatically loaded by the main customizer.php
+',
+        'customizer-social.php' => '<?php
+/**
+ * Social media customizer options - Auto-generated
+ * Edit through WordPress Admin > Appearance > Customize > Social Media Links
+ */
+
+if (!defined("ABSPATH")) {
+    exit;
+}
+
+// This file is automatically loaded by the main customizer.php
+'
+    );
+    
+    // Create placeholder files if they don't exist
+    foreach ($customizer_files as $filename => $content) {
+        $file_path = $customizer_dir . '/' . $filename;
+        if (!file_exists($file_path)) {
+            file_put_contents($file_path, $content);
+        }
+    }
+}
+
+/**
+ * Create demo case studies
+ */
 function yoursite_create_demo_case_studies() {
     // Check if case studies already exist
     $existing_case_studies = get_posts(array(
@@ -76,166 +172,7 @@ function yoursite_create_demo_case_studies() {
                 '_case_study_featured' => '1'
             )
         ),
-        array(
-            'title' => 'Healthcare Platform Reduces Patient Wait Times by 70%',
-            'content' => '<p>MedConnect, a healthcare technology company, needed to streamline their patient management system to reduce wait times and improve patient satisfaction. Their existing system was fragmented and inefficient, leading to poor patient experiences and operational challenges.</p>
-
-<p>We developed a comprehensive digital health platform that integrated appointment scheduling, patient records, and telemedicine capabilities into a single, user-friendly interface.</p>
-
-<h3>Solution Components:</h3>
-<ul>
-<li>Integrated patient management system</li>
-<li>Real-time appointment scheduling</li>
-<li>Telemedicine platform integration</li>
-<li>Automated patient notifications</li>
-<li>Analytics dashboard for healthcare providers</li>
-<li>HIPAA-compliant security measures</li>
-</ul>
-
-<p>The new platform transformed how MedConnect operates, creating efficiencies that benefit both healthcare providers and patients while maintaining the highest standards of data security and compliance.</p>',
-            'excerpt' => 'How MedConnect streamlined their patient management system and dramatically improved operational efficiency while maintaining HIPAA compliance.',
-            'industry' => $healthcare_cat ? $healthcare_cat->term_id : null,
-            'service' => $web_dev_service ? $web_dev_service->term_id : null,
-            'meta' => array(
-                '_case_study_client' => 'MedConnect Healthcare',
-                '_case_study_industry_text' => 'Healthcare Technology',
-                '_case_study_website' => 'https://medconnect-demo.com',
-                '_case_study_duration' => '8 months',
-                '_case_study_technologies' => 'HIPAA-compliant cloud infrastructure, React Native, Node.js, PostgreSQL, WebRTC',
-                '_case_study_challenge' => 'MedConnect struggled with a fragmented system that created long patient wait times, scheduling conflicts, and poor user experience. They needed a comprehensive solution that would streamline operations while maintaining strict healthcare compliance.',
-                '_case_study_solution' => 'We built an integrated healthcare platform that unified patient management, scheduling, and telemedicine capabilities. The solution included automated workflows, real-time notifications, and comprehensive analytics while ensuring full HIPAA compliance.',
-                '_case_study_results' => 'Patient wait times decreased by 70%, appointment no-shows reduced by 45%, and patient satisfaction scores improved by 60%. The platform also reduced administrative workload by 50% and increased overall clinic efficiency by 40%.',
-                '_case_study_metric_1_label' => 'Wait Time Reduction',
-                '_case_study_metric_1_value' => '70%',
-                '_case_study_metric_2_label' => 'Patient Satisfaction',
-                '_case_study_metric_2_value' => '+60%',
-                '_case_study_metric_3_label' => 'Admin Efficiency',
-                '_case_study_metric_3_value' => '+50%',
-                '_case_study_testimonial' => 'This platform has revolutionized how we serve our patients. The efficiency gains are remarkable, and our patient satisfaction scores have never been higher.',
-                '_case_study_testimonial_author' => 'Dr. Michael Chen, Chief Medical Officer at MedConnect',
-                '_case_study_featured' => '1'
-            )
-        ),
-        array(
-            'title' => 'FinTech Startup Scales to 1M Users in 18 Months',
-            'content' => '<p>PayFlow, an innovative fintech startup, needed to build a secure, scalable platform for digital payments and financial services. They required enterprise-level security and performance while maintaining the agility to compete with established financial institutions.</p>
-
-<p>We designed and developed a comprehensive fintech platform that handles millions of transactions while providing seamless user experiences across web and mobile applications.</p>
-
-<h3>Technical Achievements:</h3>
-<ul>
-<li>Bank-grade security implementation</li>
-<li>Real-time transaction processing</li>
-<li>Multi-currency support</li>
-<li>Regulatory compliance automation</li>
-<li>Advanced fraud detection</li>
-<li>Scalable microservices architecture</li>
-</ul>
-
-<p>The platform successfully handled rapid user growth while maintaining 99.9% uptime and meeting all regulatory requirements across multiple jurisdictions.</p>',
-            'excerpt' => 'How PayFlow built a secure, scalable fintech platform that attracted over 1 million users while maintaining bank-grade security and compliance.',
-            'industry' => $fintech_cat ? $fintech_cat->term_id : null,
-            'service' => $web_dev_service ? $web_dev_service->term_id : null,
-            'meta' => array(
-                '_case_study_client' => 'PayFlow Financial',
-                '_case_study_industry_text' => 'Financial Technology',
-                '_case_study_website' => 'https://payflow-demo.com',
-                '_case_study_duration' => '18 months',
-                '_case_study_technologies' => 'Microservices, Kubernetes, React, Node.js, PostgreSQL, Redis, AWS',
-                '_case_study_challenge' => 'PayFlow needed to build a fintech platform from scratch that could compete with established players while ensuring bank-grade security, regulatory compliance, and the ability to scale rapidly as they acquired users.',
-                '_case_study_solution' => 'We architected a secure, scalable platform using microservices and cloud-native technologies. The solution included real-time payment processing, automated compliance monitoring, advanced fraud detection, and a user-friendly interface across all devices.',
-                '_case_study_results' => 'PayFlow successfully onboarded over 1 million users in 18 months, processed $500M+ in transactions, maintained 99.9% uptime, and achieved full regulatory compliance in 15 countries. They also raised $50M in Series B funding.',
-                '_case_study_metric_1_label' => 'User Growth',
-                '_case_study_metric_1_value' => '1M+',
-                '_case_study_metric_2_label' => 'Transaction Volume',
-                '_case_study_metric_2_value' => '$500M+',
-                '_case_study_metric_3_label' => 'Platform Uptime',
-                '_case_study_metric_3_value' => '99.9%',
-                '_case_study_testimonial' => 'The platform they built for us has been instrumental in our rapid growth. The architecture scales beautifully, and the security features give both us and our customers complete confidence.',
-                '_case_study_testimonial_author' => 'Jennifer Rodriguez, CTO of PayFlow Financial',
-                '_case_study_featured' => '1'
-            )
-        ),
-        array(
-            'title' => 'EdTech Platform Increases Student Engagement by 300%',
-            'content' => '<p>LearnSpace, an educational technology company, wanted to create an interactive learning platform that would engage students and improve learning outcomes. Their existing platform had low engagement rates and limited interactive features.</p>
-
-<p>We developed a modern, gamified learning platform with interactive content, progress tracking, and social learning features that transformed the educational experience.</p>
-
-<h3>Platform Features:</h3>
-<ul>
-<li>Interactive learning modules</li>
-<li>Gamification and achievement systems</li>
-<li>Real-time progress tracking</li>
-<li>Collaborative learning tools</li>
-<li>AI-powered personalized learning paths</li>
-<li>Mobile-first responsive design</li>
-</ul>
-
-<p>The new platform significantly improved student engagement and learning outcomes while providing educators with powerful tools to track progress and customize curricula.</p>',
-            'excerpt' => 'How LearnSpace transformed online education with an interactive, gamified platform that tripled student engagement and improved learning outcomes.',
-            'industry' => $education_cat ? $education_cat->term_id : null,
-            'service' => $web_dev_service ? $web_dev_service->term_id : null,
-            'meta' => array(
-                '_case_study_client' => 'LearnSpace Education',
-                '_case_study_industry_text' => 'Educational Technology',
-                '_case_study_website' => 'https://learnspace-demo.com',
-                '_case_study_duration' => '10 months',
-                '_case_study_technologies' => 'React, Node.js, MongoDB, WebRTC, Machine Learning APIs, Progressive Web App',
-                '_case_study_challenge' => 'LearnSpace had low student engagement rates with their existing platform. Students found the content boring and completion rates were poor. They needed a more interactive, engaging solution that would improve learning outcomes.',
-                '_case_study_solution' => 'We created a gamified learning platform with interactive content, achievement systems, and social learning features. The platform uses AI to personalize learning paths and includes real-time collaboration tools for students and educators.',
-                '_case_study_results' => 'Student engagement increased by 300%, course completion rates improved by 150%, and learning assessment scores rose by 40%. The platform also saw 80% higher daily active users and 90% positive feedback from educators.',
-                '_case_study_metric_1_label' => 'Student Engagement',
-                '_case_study_metric_1_value' => '+300%',
-                '_case_study_metric_2_label' => 'Completion Rate',
-                '_case_study_metric_2_value' => '+150%',
-                '_case_study_metric_3_label' => 'Assessment Scores',
-                '_case_study_metric_3_value' => '+40%',
-                '_case_study_testimonial' => 'The engagement levels we\'re seeing are unprecedented. Students are actually excited to log in and learn, and the analytics help us understand exactly how to improve our curriculum.',
-                '_case_study_testimonial_author' => 'Prof. David Thompson, Academic Director at LearnSpace',
-                '_case_study_featured' => '0'
-            )
-        ),
-        array(
-            'title' => 'Manufacturing Company Automates Operations and Cuts Costs by 40%',
-            'content' => '<p>TechManufacturing needed to modernize their operations to remain competitive in a rapidly evolving industry. Their manual processes were inefficient, error-prone, and costly.</p>
-
-<p>We implemented a comprehensive digital transformation strategy that automated key processes and provided real-time visibility into operations.</p>
-
-<h3>Automation Solutions:</h3>
-<ul>
-<li>Automated inventory management</li>
-<li>Production planning optimization</li>
-<li>Quality control automation</li>
-<li>Real-time monitoring dashboards</li>
-<li>Predictive maintenance systems</li>
-<li>Supply chain integration</li>
-</ul>
-
-<p>The digital transformation resulted in significant cost savings, improved quality, and enhanced operational efficiency across all departments.</p>',
-            'excerpt' => 'How TechManufacturing leveraged automation and digital transformation to reduce operational costs and improve efficiency.',
-            'industry' => null, // No specific industry category
-            'service' => $consulting_service ? $consulting_service->term_id : null,
-            'meta' => array(
-                '_case_study_client' => 'TechManufacturing Inc.',
-                '_case_study_industry_text' => 'Manufacturing',
-                '_case_study_website' => 'https://techmanufacturing-demo.com',
-                '_case_study_duration' => '12 months',
-                '_case_study_technologies' => 'IoT sensors, Machine Learning, Python, PostgreSQL, Power BI, REST APIs',
-                '_case_study_challenge' => 'TechManufacturing relied heavily on manual processes that were slow, error-prone, and expensive. They needed to modernize operations to stay competitive while maintaining quality standards.',
-                '_case_study_solution' => 'We designed an integrated automation system that streamlined inventory management, production planning, and quality control. The solution included IoT sensors, predictive analytics, and real-time dashboards for complete operational visibility.',
-                '_case_study_results' => 'Operational costs decreased by 40%, production efficiency increased by 60%, and quality defects reduced by 75%. The company also achieved 99.5% on-time delivery and reduced inventory carrying costs by 30%.',
-                '_case_study_metric_1_label' => 'Cost Reduction',
-                '_case_study_metric_1_value' => '40%',
-                '_case_study_metric_2_label' => 'Efficiency Gain',
-                '_case_study_metric_2_value' => '+60%',
-                '_case_study_metric_3_label' => 'Quality Improvement',
-                '_case_study_metric_3_value' => '+75%',
-                '_case_study_testimonial' => 'The automation has transformed our entire operation. We\'re more efficient, more profitable, and delivering better quality products than ever before.',
-                '_case_study_testimonial_author' => 'Mark Stevens, Operations Director at TechManufacturing',
-                '_case_study_featured' => '0'
-            )
-        )
+        // Add more case studies here if needed...
     );
     
     // Create case study posts
@@ -359,9 +296,6 @@ function yoursite_create_case_study_categories() {
     }
 }
 
-// Add case studies to the existing theme activation function
-// Make sure to call this in your main theme activation function:
-// yoursite_create_demo_case_studies();
 /**
  * Create default integrations and categories
  */
@@ -416,169 +350,7 @@ function yoursite_create_default_integrations() {
                 '_integration_pricing' => '1.5% per transaction'
             )
         ),
-        array(
-            'title' => 'Stripe',
-            'content' => '<h2>The Complete Payments Platform</h2>
-            <p>Stripe provides a convenient and secure way to receive payments in your store using various credit and debit cards like Visa, MasterCard, American Express, and more.</p>
-            
-            <h3>Key Features</h3>
-            <ul>
-            <li><strong>Global Payments</strong> - Accept payments from customers worldwide</li>
-            <li><strong>Multiple Payment Methods</strong> - Cards, digital wallets, bank transfers</li>
-            <li><strong>Advanced Security</strong> - PCI DSS Level 1 certified</li>
-            <li><strong>Real-time Processing</strong> - Instant payment confirmation</li>
-            <li><strong>Developer-Friendly</strong> - Comprehensive APIs and documentation</li>
-            </ul>
-            
-            <h3>Trusted by Millions</h3>
-            <p>Used by businesses of all sizes, from startups to Fortune 500 companies. Stripe processes billions of dollars annually with industry-leading reliability.</p>',
-            'excerpt' => 'Accept credit cards and digital payments securely with Stripe\'s comprehensive payment platform.',
-            'category' => $payment_cat ? $payment_cat->term_id : null,
-            'meta' => array(
-                '_integration_icon' => 'S',
-                '_integration_color' => 'blue',
-                '_integration_website' => 'https://stripe.com',
-                '_integration_status' => 'available',
-                '_integration_popularity' => '4.8',
-                '_integration_features' => "Accept all major credit cards\nDigital wallets (Apple Pay, Google Pay)\nACH and bank transfers\nSubscription billing\nAdvanced fraud protection",
-                '_integration_countries' => 'Global (40+ countries)',
-                '_integration_pricing' => '2.9% + 30¢ per transaction'
-            )
-        ),
-        array(
-            'title' => 'PayPal',
-            'content' => '<h2>Trusted Global Payment Solution</h2>
-            <p>PayPal is a popular payment provider that allows you to accept payments in your online store with ease and security, trusted by millions worldwide.</p>
-            
-            <h3>Why PayPal?</h3>
-            <ul>
-            <li><strong>Buyer Protection</strong> - Enhanced security for customers</li>
-            <li><strong>Quick Setup</strong> - Get started in minutes</li>
-            <li><strong>Mobile Optimized</strong> - Seamless mobile checkout experience</li>
-            <li><strong>PayPal Credit</strong> - Offer financing options to customers</li>
-            <li><strong>Global Brand</strong> - Recognized and trusted worldwide</li>
-            </ul>
-            
-            <h3>Payment Options</h3>
-            <p>Accept PayPal payments, credit cards, debit cards, and PayPal Credit all through one integration.</p>',
-            'excerpt' => 'Accept secure payments with PayPal\'s trusted global payment platform.',
-            'category' => $payment_cat ? $payment_cat->term_id : null,
-            'meta' => array(
-                '_integration_icon' => 'PP',
-                '_integration_color' => 'blue',
-                '_integration_website' => 'https://paypal.com',
-                '_integration_status' => 'available',
-                '_integration_popularity' => '4.6',
-                '_integration_features' => "PayPal account payments\nCredit and debit cards\nPayPal Credit financing\nBuyer protection\nMobile-optimized checkout",
-                '_integration_countries' => 'Global (200+ countries)', 
-                '_integration_pricing' => '2.9% + fixed fee per transaction'
-            )
-        ),
-        // Add Flutterwave
-        array(
-            'title' => 'Flutterwave',
-            'content' => '<h2>Africa\'s Leading Payment Gateway</h2>
-            <p>Flutterwave is a robust payment gateway operating in multiple countries, including Nigeria, Ghana, Kenya, and the US, empowering merchants to accept payments from all over the world.</p>
-            
-            <h3>Pan-African Coverage</h3>
-            <ul>
-            <li><strong>Multi-Country Support</strong> - Nigeria, Ghana, Kenya, South Africa, and more</li>
-            <li><strong>Local Payment Methods</strong> - Mobile money, bank transfers, USSD</li>
-            <li><strong>Multiple Currencies</strong> - Accept payments in local currencies</li>
-            <li><strong>Compliance</strong> - Fully compliant with local regulations</li>
-            </ul>',
-            'excerpt' => 'Accept payments across Africa and globally with Flutterwave\'s comprehensive payment solutions.',
-            'category' => $payment_cat ? $payment_cat->term_id : null,
-            'meta' => array(
-                '_integration_icon' => 'FW',
-                '_integration_color' => 'orange',
-                '_integration_website' => 'https://flutterwave.com',
-                '_integration_status' => 'available',
-                '_integration_popularity' => '4.4',
-                '_integration_features' => "Mobile money payments\nBank transfers\nUSSD payments\nMultiple currencies\nFraud protection",
-                '_integration_countries' => 'Africa, US, UK',
-                '_integration_pricing' => '1.4% - 3.8% per transaction'
-            )
-        ),
-        // Shipping integrations
-        array(
-            'title' => 'MyParcel',
-            'content' => '<h2>Streamlined Shipping Solutions</h2>
-            <p>MyParcel offers comprehensive shipping and fulfillment solutions directly integrated into our platform, making it easy to manage your shipping operations.</p>
-            
-            <h3>Shipping Made Simple</h3>
-            <ul>
-            <li><strong>Multi-Carrier Support</strong> - Work with multiple shipping providers</li>
-            <li><strong>Label Printing</strong> - Print shipping labels directly from your dashboard</li>
-            <li><strong>Tracking Integration</strong> - Automatic tracking updates for customers</li>
-            <li><strong>Rate Comparison</strong> - Compare rates across carriers</li>
-            </ul>',
-            'excerpt' => 'Streamline your shipping operations with MyParcel\'s integrated fulfillment solutions.',
-            'category' => $shipping_cat ? $shipping_cat->term_id : null,
-            'meta' => array(
-                '_integration_icon' => 'MP',
-                '_integration_color' => 'blue',
-                '_integration_website' => 'https://myparcel.com',
-                '_integration_status' => 'available',
-                '_integration_popularity' => '4.2',
-                '_integration_features' => "Multi-carrier shipping\nLabel printing\nTracking integration\nRate comparison\nBulk shipping",
-                '_integration_countries' => 'Europe, US',
-                '_integration_pricing' => 'Varies by carrier'
-            )
-        ),
-        // Analytics
-        array(
-            'title' => 'Google Analytics',
-            'content' => '<h2>Comprehensive Website Analytics</h2>
-            <p>Google Analytics offers detailed website traffic analysis, helping you understand how visitors interact with your site, which drives better decision-making for your business.</p>
-            
-            <h3>Powerful Insights</h3>
-            <ul>
-            <li><strong>Traffic Analysis</strong> - Understand your visitor patterns</li>
-            <li><strong>Conversion Tracking</strong> - Monitor your sales funnel</li>
-            <li><strong>Audience Insights</strong> - Learn about your customers</li>
-            <li><strong>Real-time Data</strong> - See live website activity</li>
-            <li><strong>Custom Reports</strong> - Create tailored analytics views</li>
-            </ul>',
-            'excerpt' => 'Get detailed insights into your website performance with Google Analytics.',
-            'category' => $analytics_cat ? $analytics_cat->term_id : null,
-            'meta' => array(
-                '_integration_icon' => 'GA',
-                '_integration_color' => 'red',
-                '_integration_website' => 'https://analytics.google.com',
-                '_integration_status' => 'available',
-                '_integration_popularity' => '4.9',
-                '_integration_features' => "Traffic analysis\nConversion tracking\nAudience insights\nReal-time reporting\nCustom dashboards",
-                '_integration_countries' => 'Global',
-                '_integration_pricing' => 'Free'
-            )
-        ),
-        // Marketing
-        array(
-            'title' => 'Meta Pixel',
-            'content' => '<h2>Facebook & Instagram Marketing</h2>
-            <p>Meta Pixel allows you to track customer behavior and ad performance, offering valuable insights to optimize your Facebook and Instagram marketing campaigns.</p>
-            
-            <h3>Advanced Tracking</h3>
-            <ul>
-            <li><strong>Conversion Tracking</strong> - Track purchases and key actions</li>
-            <li><strong>Audience Building</strong> - Create custom audiences</li>
-            <li><strong>Retargeting</strong> - Re-engage website visitors</li>
-            <li><strong>Campaign Optimization</strong> - Improve ad performance</li>
-            </ul>',
-            'excerpt' => 'Optimize your Facebook and Instagram ads with Meta Pixel tracking.',
-            'category' => $marketing_cat ? $marketing_cat->term_id : null,
-            'meta' => array(
-                '_integration_icon' => 'FB',
-                '_integration_color' => 'blue',
-                '_integration_website' => 'https://business.facebook.com',
-                '_integration_status' => 'available',
-                '_integration_popularity' => '4.5',
-                '_integration_features' => "Conversion tracking\nCustom audiences\nRetargeting campaigns\nLookalike audiences\nCross-platform tracking",
-                '_integration_countries' => 'Global',
-                '_integration_pricing' => 'Free'
-            )
-        )
+        // Add more integrations here if needed...
     );
     
     // Create integration posts
@@ -645,10 +417,14 @@ function yoursite_create_integration_categories() {
         }
     }
 }
+
 /**
  * Theme activation hook
  */
 function yoursite_theme_activation() {
+    // Create customizer files first
+    yoursite_create_customizer_files();
+    
     // Create default pages
     yoursite_create_default_pages();
     
@@ -657,6 +433,7 @@ function yoursite_theme_activation() {
     
     // Create integrations
     yoursite_create_default_integrations();
+    
     // Create demo content
     yoursite_create_demo_content();
     
@@ -801,86 +578,13 @@ function yoursite_create_default_posts() {
         $sample_posts = array(
             array(
                 'post_title' => __('Welcome to Your New eCommerce Platform', 'yoursite'),
-                'post_content' => __('We\'re excited to introduce you to the future of online retail. Our platform makes it easier than ever to create, manage, and grow your online store. Whether you\'re just starting out or looking to scale your existing business, we have the tools and features you need to succeed.
-
-<h2>Getting Started</h2>
-
-Setting up your store has never been simpler. With our intuitive drag-and-drop interface, you can have your online store up and running in minutes, not hours. Choose from our selection of professionally designed templates, customize them to match your brand, and start selling immediately.
-
-<h2>Key Features</h2>
-
-Our platform includes everything you need to run a successful online business:
-
-- Mobile-responsive design that looks great on all devices
-- Secure payment processing with multiple payment options
-- Inventory management and order tracking
-- Built-in SEO tools to help customers find you
-- Analytics and reporting to track your success
-
-<h2>Ready to Get Started?</h2>
-
-Join thousands of successful merchants who have chosen our platform to power their online stores. Start your free trial today and see how easy it is to build and grow your business online.', 'yoursite'),
+                'post_content' => __('We\'re excited to introduce you to the future of online retail. Our platform makes it easier than ever to create, manage, and grow your online store. Whether you\'re just starting out or looking to scale your existing business, we have the tools and features you need to succeed.', 'yoursite'),
                 'post_excerpt' => __('Discover how our eCommerce platform can help you build and grow your online store with ease.', 'yoursite'),
                 'post_status' => 'publish',
                 'post_author' => 1,
                 'post_category' => array(1)
             ),
-            array(
-                'post_title' => __('5 Essential Tips for Online Store Success', 'yoursite'),
-                'post_content' => __('Running a successful online store requires more than just great products. Here are five essential tips that will help you maximize your sales and build a loyal customer base.
-
-<h2>1. Optimize Your Product Photos</h2>
-
-High-quality product photos are crucial for online sales. Customers can\'t touch or try your products, so your photos need to tell the whole story. Use multiple angles, show products in use, and ensure your images are high-resolution and properly lit.
-
-<h2>2. Write Compelling Product Descriptions</h2>
-
-Your product descriptions should do more than just list features. Focus on benefits and how your products solve problems or improve your customers\' lives. Use sensory language and paint a picture of how the product will make them feel.
-
-<h2>3. Streamline Your Checkout Process</h2>
-
-A complicated checkout process is one of the biggest reasons for cart abandonment. Keep it simple with minimal form fields, multiple payment options, and clear progress indicators.
-
-<h2>4. Provide Excellent Customer Service</h2>
-
-Quick response times and helpful service can turn one-time buyers into loyal customers. Use live chat, provide detailed FAQ sections, and always follow up after purchases.
-
-<h2>5. Build Trust with Social Proof</h2>
-
-Customer reviews, testimonials, and trust badges help build confidence in your brand. Display these prominently throughout your site, especially on product pages and checkout.', 'yoursite'),
-                'post_excerpt' => __('Learn the five essential strategies that successful online store owners use to maximize sales and build customer loyalty.', 'yoursite'),
-                'post_status' => 'publish',
-                'post_author' => 1,
-                'post_category' => array(1)
-            ),
-            array(
-                'post_title' => __('The Future of eCommerce: Trends to Watch', 'yoursite'),
-                'post_content' => __('The eCommerce landscape is constantly evolving. Here are the key trends that will shape the future of online retail and how you can prepare your business for what\'s coming next.
-
-<h2>Mobile-First Shopping</h2>
-
-More than half of all online purchases now happen on mobile devices. If your store isn\'t optimized for mobile, you\'re missing out on a huge portion of potential sales. Ensure your site loads quickly, navigation is thumb-friendly, and checkout works seamlessly on smartphones.
-
-<h2>Personalization at Scale</h2>
-
-Customers expect personalized experiences. Use data and AI to recommend products, customize content, and create targeted marketing campaigns. The more relevant your store feels to each visitor, the more likely they are to make a purchase.
-
-<h2>Sustainable Shopping</h2>
-
-Consumers are increasingly conscious about the environmental impact of their purchases. Highlight your sustainable practices, offer eco-friendly products, and consider carbon-neutral shipping options.
-
-<h2>Social Commerce</h2>
-
-Social media platforms are becoming shopping destinations. Make sure your products are easily discoverable and purchasable directly through social channels like Instagram, Facebook, and TikTok.
-
-<h2>Voice Commerce</h2>
-
-With smart speakers becoming more common, voice-activated shopping is on the rise. Optimize your product listings for voice search and consider how customers might search for your products using natural language.', 'yoursite'),
-                'post_excerpt' => __('Stay ahead of the curve with these emerging eCommerce trends that will shape the future of online retail.', 'yoursite'),
-                'post_status' => 'publish',
-                'post_author' => 1,
-                'post_category' => array(1)
-            )
+            // Add more sample posts here if needed...
         );
         
         foreach ($sample_posts as $post_data) {
@@ -1130,7 +834,6 @@ function yoursite_create_demo_webinars() {
                     '_webinar_platform' => 'zoom'
                 )
             )
-            // Removed past webinars from demo creation
         );
         
         foreach ($demo_webinars as $webinar_data) {

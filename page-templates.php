@@ -6,13 +6,13 @@ Template Name: Templates Page
 get_header(); ?>
 
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-purple-50 to-pink-100 py-20">
+<section class="templates-hero-section bg-gradient-to-br from-purple-50 to-pink-100 py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <h1 class="templates-hero-title text-4xl lg:text-6xl font-bold mb-6">
                 Beautiful templates for every business
             </h1>
-            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p class="templates-hero-subtitle text-xl mb-8 max-w-3xl mx-auto">
                 Choose from 100+ professionally designed templates. All mobile-responsive, SEO-optimized, and ready to customize for your brand.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
@@ -28,17 +28,17 @@ get_header(); ?>
 </section>
 
 <!-- Featured Templates -->
-<section class="py-20">
+<section class="templates-featured-section py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Featured Templates</h2>
-                <p class="text-xl text-gray-600">Our most popular and versatile designs</p>
+                <h2 class="templates-section-title text-3xl lg:text-4xl font-bold mb-4">Featured Templates</h2>
+                <p class="templates-section-subtitle text-xl">Our most popular and versatile designs</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <!-- Template 1 - Fashion -->
-                <div class="template-card fashion bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
+                <div class="template-card fashion templates-card bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
                     <div class="relative group">
                         <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-pink-100 to-purple-100 h-48">
                             <div class="flex items-center justify-center">
@@ -48,7 +48,7 @@ get_header(); ?>
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-600 font-medium">Fashion Store</p>
+                                    <p class="template-preview-text text-gray-600 font-medium">Fashion Store</p>
                                 </div>
                             </div>
                         </div>
@@ -60,22 +60,22 @@ get_header(); ?>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Luxe Fashion</h3>
-                        <p class="text-gray-600 mb-4">Perfect for high-end fashion brands with elegant product showcases</p>
+                        <h3 class="template-card-title text-xl font-semibold mb-2">Luxe Fashion</h3>
+                        <p class="template-card-description text-gray-600 mb-4">Perfect for high-end fashion brands with elegant product showcases</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-sm text-gray-500">Fashion</span>
+                            <span class="template-card-category text-sm text-gray-500">Fashion</span>
                             <div class="flex items-center">
                                 <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <span class="text-sm text-gray-600 ml-1">4.8</span>
+                                <span class="template-card-rating text-sm text-gray-600 ml-1">4.8</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Template 2 - Electronics -->
-                <div class="template-card electronics bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
+                <div class="template-card electronics templates-card bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
                     <div class="relative group">
                         <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-blue-100 to-indigo-100 h-48">
                             <div class="flex items-center justify-center">
@@ -85,7 +85,7 @@ get_header(); ?>
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-600 font-medium">Tech Store</p>
+                                    <p class="template-preview-text text-gray-600 font-medium">Tech Store</p>
                                 </div>
                             </div>
                         </div>
@@ -97,22 +97,22 @@ get_header(); ?>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">TechVault</h3>
-                        <p class="text-gray-600 mb-4">Modern design for electronics with detailed product specifications</p>
+                        <h3 class="template-card-title text-xl font-semibold mb-2">TechVault</h3>
+                        <p class="template-card-description text-gray-600 mb-4">Modern design for electronics with detailed product specifications</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-sm text-gray-500">Electronics</span>
+                            <span class="template-card-category text-sm text-gray-500">Electronics</span>
                             <div class="flex items-center">
                                 <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <span class="text-sm text-gray-600 ml-1">4.9</span>
+                                <span class="template-card-rating text-sm text-gray-600 ml-1">4.9</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Template 3 - Food -->
-                <div class="template-card food bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
+                <div class="template-card food templates-card bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
                     <div class="relative group">
                         <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-orange-100 to-red-100 h-48">
                             <div class="flex items-center justify-center">
@@ -122,7 +122,7 @@ get_header(); ?>
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m-2.4 0L5 21h14"></path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-600 font-medium">Food & Drink</p>
+                                    <p class="template-preview-text text-gray-600 font-medium">Food & Drink</p>
                                 </div>
                             </div>
                         </div>
@@ -134,15 +134,15 @@ get_header(); ?>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Gourmet Kitchen</h3>
-                        <p class="text-gray-600 mb-4">Warm, inviting design perfect for food and beverage stores</p>
+                        <h3 class="template-card-title text-xl font-semibold mb-2">Gourmet Kitchen</h3>
+                        <p class="template-card-description text-gray-600 mb-4">Warm, inviting design perfect for food and beverage stores</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-sm text-gray-500">Food & Drink</span>
+                            <span class="template-card-category text-sm text-gray-500">Food & Drink</span>
                             <div class="flex items-center">
                                 <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <span class="text-sm text-gray-600 ml-1">4.7</span>
+                                <span class="template-card-rating text-sm text-gray-600 ml-1">4.7</span>
                             </div>
                         </div>
                     </div>
@@ -153,17 +153,17 @@ get_header(); ?>
 </section>
 
 <!-- All Templates Grid -->
-<section class="bg-gray-50 py-20">
+<section class="templates-grid-section bg-gray-50 py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">All Templates</h2>
-                <p class="text-xl text-gray-600">Browse our complete collection of templates</p>
+                <h2 class="templates-section-title text-3xl lg:text-4xl font-bold mb-4">All Templates</h2>
+                <p class="templates-section-subtitle text-xl">Browse our complete collection of templates</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="templates-grid">
                 <!-- Template Grid Items -->
-                <div class="template-card home bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
+                <div class="template-card home templates-card bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
                     <div class="relative group">
                         <div class="bg-gradient-to-br from-green-100 to-teal-100 h-32">
                             <div class="flex items-center justify-center h-full">
@@ -182,18 +182,18 @@ get_header(); ?>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h4 class="font-semibold mb-1">Organic Market</h4>
-                        <p class="text-sm text-gray-600 mb-2">Food & Drink</p>
+                        <h4 class="template-grid-title font-semibold mb-1">Organic Market</h4>
+                        <p class="template-grid-category text-sm text-gray-600 mb-2">Food & Drink</p>
                         <div class="flex items-center">
                             <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                             </svg>
-                            <span class="text-sm text-gray-600 ml-1">4.6</span>
+                            <span class="template-grid-rating text-sm text-gray-600 ml-1">4.6</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="template-card home bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
+                <div class="template-card home templates-card bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
                     <div class="relative group">
                         <div class="bg-gradient-to-br from-teal-100 to-green-100 h-32">
                             <div class="flex items-center justify-center h-full">
@@ -212,18 +212,18 @@ get_header(); ?>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h4 class="font-semibold mb-1">Garden Oasis</h4>
-                        <p class="text-sm text-gray-600 mb-2">Home & Garden</p>
+                        <h4 class="template-grid-title font-semibold mb-1">Garden Oasis</h4>
+                        <p class="template-grid-category text-sm text-gray-600 mb-2">Home & Garden</p>
                         <div class="flex items-center">
                             <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                             </svg>
-                            <span class="text-sm text-gray-600 ml-1">4.4</span>
+                            <span class="template-grid-rating text-sm text-gray-600 ml-1">4.4</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="template-card beauty bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
+                <div class="template-card beauty templates-card bg-white rounded-lg shadow-sm overflow-hidden feature-card border border-gray-200">
                     <div class="relative group">
                         <div class="bg-gradient-to-br from-rose-100 to-pink-100 h-32">
                             <div class="flex items-center justify-center h-full">
@@ -242,13 +242,13 @@ get_header(); ?>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h4 class="font-semibold mb-1">Glow Studio</h4>
-                        <p class="text-sm text-gray-600 mb-2">Beauty</p>
+                        <h4 class="template-grid-title font-semibold mb-1">Glow Studio</h4>
+                        <p class="template-grid-category text-sm text-gray-600 mb-2">Beauty</p>
                         <div class="flex items-center">
                             <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                             </svg>
-                            <span class="text-sm text-gray-600 ml-1">4.9</span>
+                            <span class="template-grid-rating text-sm text-gray-600 ml-1">4.9</span>
                         </div>
                     </div>
                 </div>
@@ -263,12 +263,12 @@ get_header(); ?>
 </section>
 
 <!-- Template Features -->
-<section class="py-20">
+<section class="templates-features-section py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Why Choose Our Templates?</h2>
-                <p class="text-xl text-gray-600">Every template is built with best practices and conversion optimization</p>
+                <h2 class="templates-section-title text-3xl lg:text-4xl font-bold mb-4">Why Choose Our Templates?</h2>
+                <p class="templates-section-subtitle text-xl">Every template is built with best practices and conversion optimization</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -278,8 +278,8 @@ get_header(); ?>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Mobile Responsive</h3>
-                    <p class="text-gray-600">Perfect on every device and screen size</p>
+                    <h3 class="templates-feature-title text-xl font-semibold mb-3">Mobile Responsive</h3>
+                    <p class="templates-feature-description">Perfect on every device and screen size</p>
                 </div>
                 
                 <div class="text-center">
@@ -288,8 +288,8 @@ get_header(); ?>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">SEO Optimized</h3>
-                    <p class="text-gray-600">Built-in SEO best practices for better rankings</p>
+                    <h3 class="templates-feature-title text-xl font-semibold mb-3">SEO Optimized</h3>
+                    <p class="templates-feature-description">Built-in SEO best practices for better rankings</p>
                 </div>
                 
                 <div class="text-center">
@@ -298,8 +298,8 @@ get_header(); ?>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Fast Loading</h3>
-                    <p class="text-gray-600">Optimized for speed and performance</p>
+                    <h3 class="templates-feature-title text-xl font-semibold mb-3">Fast Loading</h3>
+                    <p class="templates-feature-description">Optimized for speed and performance</p>
                 </div>
                 
                 <div class="text-center">
@@ -308,8 +308,8 @@ get_header(); ?>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Easy Customization</h3>
-                    <p class="text-gray-600">Drag & drop customization without coding</p>
+                    <h3 class="templates-feature-title text-xl font-semibold mb-3">Easy Customization</h3>
+                    <p class="templates-feature-description">Drag & drop customization without coding</p>
                 </div>
             </div>
         </div>
@@ -317,7 +317,7 @@ get_header(); ?>
 </section>
 
 <!-- CTA Section -->
-<section class="hero-gradient text-white py-20">
+<section class="templates-cta-section hero-gradient text-white py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl lg:text-5xl font-bold mb-6">
@@ -327,16 +327,234 @@ get_header(); ?>
                 Choose a template and customize it to match your brand in minutes
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#" class="btn-primary text-lg px-8 py-4 bg-white text-purple-600 hover:bg-gray-100">
+                <a href="#" class="templates-cta-primary text-lg px-8 py-4">
                     Start Free Trial
                 </a>
-                <a href="/pricing" class="btn-secondary text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-purple-600">
+                <a href="/pricing" class="templates-cta-secondary text-lg px-8 py-4">
                     View Pricing
                 </a>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+/* Templates Page Dark Mode Styles */
+
+/* Hero Section */
+.templates-hero-section {
+    background: linear-gradient(to bottom right, rgb(250 245 255), rgb(252 231 243));
+}
+
+body.dark-mode .templates-hero-section {
+    background: linear-gradient(to bottom right, var(--bg-secondary), var(--bg-tertiary));
+}
+
+.templates-hero-title {
+    color: var(--text-primary);
+}
+
+.templates-hero-subtitle {
+    color: var(--text-tertiary);
+}
+
+/* Featured Templates Section */
+.templates-featured-section {
+    background-color: var(--bg-primary);
+}
+
+/* Grid Section */
+.templates-grid-section {
+    background-color: var(--bg-secondary);
+}
+
+/* Features Section */
+.templates-features-section {
+    background-color: var(--bg-primary);
+}
+
+/* Section Titles and Subtitles */
+.templates-section-title {
+    color: var(--text-primary);
+}
+
+.templates-section-subtitle {
+    color: var(--text-tertiary);
+}
+
+/* Template Cards */
+.templates-card {
+    background-color: var(--bg-primary);
+    border-color: var(--border-primary);
+}
+
+.template-card-title {
+    color: var(--text-primary);
+}
+
+.template-card-description {
+    color: var(--text-tertiary);
+}
+
+.template-card-category {
+    color: var(--text-tertiary);
+}
+
+.template-card-rating {
+    color: var(--text-tertiary);
+}
+
+/* Grid Template Cards */
+.template-grid-title {
+    color: var(--text-primary);
+}
+
+.template-grid-category {
+    color: var(--text-tertiary);
+}
+
+.template-grid-rating {
+    color: var(--text-tertiary);
+}
+
+/* Template Preview Text */
+.template-preview-text {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .template-preview-text {
+    color: var(--text-secondary) !important;
+}
+
+/* Feature Cards */
+.templates-feature-title {
+    color: var(--text-primary);
+}
+
+.templates-feature-description {
+    color: var(--text-tertiary);
+}
+
+/* Filter Buttons */
+body.dark-mode .template-filter-btn:not(.active) {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-primary);
+}
+
+body.dark-mode .template-filter-btn:not(.active):hover {
+    background-color: var(--bg-secondary);
+}
+
+/* CTA Section Buttons */
+.templates-cta-primary {
+    background: white !important;
+    color: #764ba2 !important;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+    border: 2px solid white;
+}
+
+.templates-cta-primary:hover {
+    background: #f9fafb !important;
+    color: #764ba2 !important;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.templates-cta-secondary {
+    background: transparent !important;
+    border: 2px solid white !important;
+    color: white !important;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.templates-cta-secondary:hover {
+    background: white !important;
+    color: #764ba2 !important;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* Dark mode overrides for CTA buttons */
+body.dark-mode .templates-cta-primary {
+    background: white !important;
+    color: #764ba2 !important;
+    border-color: white !important;
+}
+
+body.dark-mode .templates-cta-primary:hover {
+    background: #f3f4f6 !important;
+    color: #5b21b6 !important;
+}
+
+body.dark-mode .templates-cta-secondary {
+    background: transparent !important;
+    border: 2px solid white !important;
+    color: white !important;
+}
+
+body.dark-mode .templates-cta-secondary:hover {
+    background: white !important;
+    color: #764ba2 !important;
+}
+
+/* Keep icon backgrounds colorful */
+body.dark-mode .bg-blue-100,
+body.dark-mode .bg-green-100,
+body.dark-mode .bg-purple-100,
+body.dark-mode .bg-orange-100,
+body.dark-mode .bg-pink-100,
+body.dark-mode .bg-rose-100,
+body.dark-mode .bg-teal-100,
+body.dark-mode .bg-pink-200,
+body.dark-mode .bg-blue-200,
+body.dark-mode .bg-orange-200,
+body.dark-mode .bg-green-200,
+body.dark-mode .bg-rose-200,
+body.dark-mode .bg-teal-200 {
+    opacity: 0.9;
+}
+
+/* Ensure proper text inheritance */
+body.dark-mode .templates-featured-section *:not(.text-pink-600):not(.text-blue-600):not(.text-orange-600):not(.text-green-600):not(.text-rose-600):not(.text-teal-600):not(.text-yellow-400):not(.text-white):not(.bg-purple-500) {
+    color: inherit;
+}
+
+body.dark-mode .templates-grid-section *:not(.text-pink-600):not(.text-blue-600):not(.text-orange-600):not(.text-green-600):not(.text-rose-600):not(.text-teal-600):not(.text-yellow-400):not(.text-white):not(.bg-blue-500) {
+    color: inherit;
+}
+
+body.dark-mode .templates-features-section *:not(.text-blue-600):not(.text-green-600):not(.text-purple-600):not(.text-orange-600) {
+    color: inherit;
+}
+
+/* Template card hover overlays */
+body.dark-mode .templates-card .group-hover\:bg-opacity-50 {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Additional text fixes for small elements */
+body.dark-mode .templates-card h3,
+body.dark-mode .templates-card h4 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .templates-card p:not(.text-yellow-400) {
+    color: var(--text-tertiary) !important;
+}
+
+body.dark-mode .templates-card span:not(.text-yellow-400) {
+    color: var(--text-tertiary) !important;
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

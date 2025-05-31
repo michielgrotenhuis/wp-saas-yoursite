@@ -40,7 +40,8 @@ function yoursite_load_components() {
         'ajax-handlers.php',         // AJAX form handlers
         'admin-functions.php',       // Admin panel functions
         'security.php',              // Security enhancements
-        'theme-activation.php'       // Theme activation hooks
+        'theme-activation.php',      // Theme activation hooks
+        'theme-modes.php'            // Dark/Light mode functionality
     );
     
     foreach ($components as $component) {
